@@ -21,7 +21,7 @@ def pie_chart(selected_year, selected_country):
     fig.update_layout (
         autosize=False,
         width=280,
-        height=220, 
+        height=210, 
         title_text=f'''CO2 EMISSION BY INDUSTRY <br> ({selected_country} - {selected_year})''', 
         title_x=1,  
         title_y=.9,
@@ -211,7 +211,7 @@ def display_pie_chart(clickData):
     if clickData and 'points' in clickData:
         point = clickData['points'][0]
         selected_country = point.get('hovertext', '')
-        selected_year = point.get('customdata', [])[0]
+        selected_year = point.get('customdata', [])[2]
   
 
         piechart = dcc.Graph(figure=pie_chart(selected_year, selected_country),
@@ -226,8 +226,8 @@ def display_pie_chart(clickData):
         hide_button=html.Button('Hide/Show', n_clicks=0,
         style = {
             "position": "absolute",
-            "bottom": f"{130}px",
             "left": f"{260}px",
+            "bottom": f"{130}px",
             "zIndex": 1,
             "color": "#a9a9a9",
             "backgroundColor": "#696261",
