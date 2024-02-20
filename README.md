@@ -7,7 +7,7 @@ Additionally, users have the option to hide or show the pie chart using a conven
 The project sources its CO2 production data from https://github.com/owid/co2-data.git. 
 The primary goal is to provide an insightful and interactive visualization of global CO2 production patterns.
 
-## The data set
+## The data set 
 The data set was cleaned up to keep only data after the year of 1920, and the following columns: 
 country,region,year,iso_code,land_use_change_co2,cement_co2,coal_co2,flaring_co2,oil_co2,gas_co2,other_industry_co2.
 
