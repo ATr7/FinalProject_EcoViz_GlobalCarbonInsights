@@ -132,7 +132,7 @@ def setup_layout(fig):
             showarrow=False,
             xref='paper',
             yref='paper',
-            x=0.75,
+            x=0.73,
             y=0.35,
             xanchor='center',
             yanchor='bottom',
