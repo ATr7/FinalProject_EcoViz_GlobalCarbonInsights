@@ -217,8 +217,8 @@ def display_pie_chart(clickData):
         piechart = dcc.Graph(figure=pie_chart(selected_year, selected_country),
         style={
             "position": "absolute",
-            "left": f"{130}px",
-            "bottom": f"{170}px",
+            "left": f"{130}px", #Adjust as needed
+            "bottom": f"{170}px", #Adjust as needed
             "zIndex": 1,
             "display": "block"  # Set display to block to show the piechart
         })
@@ -226,8 +226,8 @@ def display_pie_chart(clickData):
         hide_button=html.Button('Hide/Show', n_clicks=0,
         style = {
             "position": "absolute",
-            "left": f"{260}px",
-            "bottom": f"{130}px",
+            "left": f"{260}px", #Adjust as needed
+            "bottom": f"{130}px", #Adjust as needed
             "zIndex": 1,
             "color": "#a9a9a9",
             "backgroundColor": "#696261",
