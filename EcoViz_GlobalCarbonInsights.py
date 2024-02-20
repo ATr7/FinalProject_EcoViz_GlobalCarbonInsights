@@ -5,7 +5,7 @@ from dash import Dash, html, dcc
 from dash.dependencies import Input, Output
 
 #main df dropping rows with neg and NA CO2 value, sort by year
-co2_production = pd.read_csv("clean-co2-data.csv", usecols=['country', 'year','region', 'iso_code', 'Industry', 'CO2 Value'])
+co2_production = pd.read_csv("/Users/antruong/Downloads/Bridge Programs/C-Women/Python - Final Project/clean-co2-data.csv", usecols=['country', 'year','region', 'iso_code', 'Industry', 'CO2 Value'])
 co2_production = co2_production[co2_production['CO2 Value'] >= 0]\
 .dropna(subset=['CO2 Value']).sort_values('year').reset_index(drop=True) 
 co2_production['year']=co2_production['year'].astype(int)
@@ -163,9 +163,8 @@ def setup_layout(fig):
     return fig
 
 def scatter_geo(df):
-    hover_text = [f"<b>{country}</b><br><br>Continent: {region}<br>Year: {year}<br>CO2: {co2:,.2f}"
-                 for country, region, year, co2 in zip(
-                      df['country'],
+    hover_text = [f"Continent: {region}<br>Year: {year}<br>CO2: {co2:,.2f}"
+                 for region, year, co2 in zip(
                       df['region'], 
                       df['year'], 
                       df['CO2 Value'])] #list comprehensive
@@ -178,10 +177,9 @@ def scatter_geo(df):
                                                   '#06d6a0', '#073b4c', '#118ab2'],
                          projection='equirectangular',
                          hover_data={
-                             'year': False},
+                             'year': False,'iso_code':False,'CO2 Value':False,'':hover_text},
                         
                          basemap_visible=True)
-    fig.update_traces(hovertemplate=hover_text)
     fig = setup_layout(fig)
     
     return fig
@@ -211,7 +209,7 @@ def display_pie_chart(clickData):
     if clickData and 'points' in clickData:
         point = clickData['points'][0]
         selected_country = point.get('hovertext', '')
-        selected_year = point.get('customdata', [])[2]
+        selected_year = point.get('customdata', [])[0]
   
 
         piechart = dcc.Graph(figure=pie_chart(selected_year, selected_country),
@@ -251,4 +249,4 @@ def hide_chart(n_clicks):
         return [dash.no_update]
 
 if __name__ == '__main__':
-    app.run_server(debug=True) #default port 8050
+    app.run_server(debug=True)
