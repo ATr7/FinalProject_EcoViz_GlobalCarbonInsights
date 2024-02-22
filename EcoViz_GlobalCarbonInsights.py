@@ -5,7 +5,7 @@ from dash import Dash, html, dcc
 from dash.dependencies import Input, Output
 
 #main df dropping rows with neg and NA CO2 value, sort by year
-co2_production = pd.read_csv("/Users/antruong/Downloads/Bridge Programs/C-Women/Python - Final Project/clean-co2-data.csv", usecols=['country', 'year','region', 'iso_code', 'Industry', 'CO2 Value'])
+co2_production = pd.read_csv(".../clean-co2-data.csv", usecols=['country', 'year','region', 'iso_code', 'Industry', 'CO2 Value'])
 co2_production = co2_production[co2_production['CO2 Value'] >= 0]\
 .dropna(subset=['CO2 Value']).sort_values('year').reset_index(drop=True) 
 co2_production['year']=co2_production['year'].astype(int)
